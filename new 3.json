@@ -1,0 +1,38 @@
+You are an intelligent assistant. I will provide you with a resume, and you will parse its content into a JSON format. The JSON should include the following fields: "name", "contact", "summary", "education", "experience", "skills", and "projects".
+
+Resume:
+[Paste your resume content here]
+
+Expected JSON format:
+{
+  "name": "",
+  "contact": "",
+  "summary": "",
+  "education": [
+    {
+      "institution": "",
+      "degree": "",
+      "start_date": "",
+      "end_date": ""
+    }
+  ],
+  "experience": [
+    {
+      "company": "",
+      "role": "",
+      "start_date": "",
+      "end_date": "",
+      "responsibilities": []
+    }
+  ],
+  "skills": [],
+  "projects": [
+    {
+      "name": "",
+      "description": "",
+      "technologies": []
+    }
+  ]
+}
+
+Please parse the resume content into the above JSON format.

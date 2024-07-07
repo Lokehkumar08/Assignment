@@ -1,0 +1,61 @@
+You are an intelligent assistant. I will provide you with a resume, and you will parse its content into a JSON format. The JSON should include the following fields: "name", "contact", "summary", "education", "experience", "skills", and "projects".
+
+Resume:
+John Doe
+Email: john.doe@example.com
+Phone: (123) 456-7890
+
+Summary:
+Experienced software developer with a strong background in AI and machine learning.
+
+Education:
+XYZ University, Bachelor of Science in Computer Science, September 2015 - June 2019
+
+Experience:
+ABC Corp, Software Developer, July 2019 - Present
+- Developed machine learning models for predictive analytics
+- Collaborated with cross-functional teams
+
+Skills:
+Python, Java, Machine Learning, Data Analysis
+
+Projects:
+SmartCompare - A web app for comparing mobile phones based on features. Technologies used: React, Node.js, MongoDB.
+
+Expected JSON format:
+{
+  "name": "John Doe",
+  "contact": {
+    "email": "john.doe@example.com",
+    "phone": "(123) 456-7890"
+  },
+  "summary": "Experienced software developer with a strong background in AI and machine learning.",
+  "education": [
+    {
+      "institution": "XYZ University",
+      "degree": "Bachelor of Science in Computer Science",
+      "start_date": "September 2015",
+      "end_date": "June 2019"
+    }
+  ],
+  "experience": [
+    {
+      "company": "ABC Corp",
+      "role": "Software Developer",
+      "start_date": "July 2019",
+      "end_date": "Present",
+      "responsibilities": [
+        "Developed machine learning models for predictive analytics",
+        "Collaborated with cross-functional teams"
+      ]
+    }
+  ],
+  "skills": ["Python", "Java", "Machine Learning", "Data Analysis"],
+  "projects": [
+    {
+      "name": "SmartCompare",
+      "description": "A web app for comparing mobile phones based on features.",
+      "technologies": ["React", "Node.js", "MongoDB"]
+    }
+  ]
+}
