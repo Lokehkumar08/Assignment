@@ -1,0 +1,64 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class FetchSampleData {
+    private static final String URL = "jdbc:mysql://localhost:3306/MovieBookingSystem"; // Update with your DB URL
+    private static final String USER = "root"; // Replace with your MySQL username
+    private static final String PASSWORD = "your_password"; // Replace with your MySQL password
+
+    public static void main(String[] args) {
+        Connection connection = null;
+
+        try {
+            // Load MySQL JDBC Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish connection
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Database connected successfully!");
+
+            // Create a statement
+            Statement stmt = connection.createStatement();
+
+            // Fetch data from Admin table
+            System.out.println("\nAdmin Table:");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Admin");
+            while (rs.next()) {
+                System.out.println("Admin ID: " + rs.getInt("adminID") + ", Name: " + rs.getString("name") +
+                                   ", Email: " + rs.getString("email"));
+            }
+
+            // Fetch data from Movie table
+            System.out.println("\nMovie Table:");
+            rs = stmt.executeQuery("SELECT * FROM Movie");
+            while (rs.next()) {
+                System.out.println("Movie ID: " + rs.getInt("movieID") + ", Title: " + rs.getString("title") +
+                                   ", Genre: " + rs.getString("genre") + ", Language: " + rs.getString("language"));
+            }
+
+            // Fetch data from Booking table
+            System.out.println("\nBooking Table:");
+            rs = stmt.executeQuery("SELECT * FROM Booking");
+            while (rs.next()) {
+                System.out.println("Booking ID: " + rs.getInt("bookingID") + ", User ID: " + rs.getInt("userID") +
+                                   ", Show ID: " + rs.getInt("showID") + ", Seats Booked: " + rs.getInt("seatsBooked") +
+                                   ", Total Amount: " + rs.getFloat("totalAmount") + ", Status: " + rs.getString("bookingStatus"));
+            }
+
+            // Close the result set and statement
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) connection.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
