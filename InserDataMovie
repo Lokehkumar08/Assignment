@@ -114,3 +114,21 @@ VALUES
 (1, 1, 'Your booking is confirmed. Enjoy the movie!'),
 (2, 2, 'Your payment is pending. Please complete it.');
 
+
+-------------------
+
+
+SET FOREIGN_KEY_CHECKS = 0; -- Disable foreign key checks
+
+DELETE FROM BookingNotification;
+DELETE FROM PaymentConfirmation;
+DELETE FROM Payment;
+DELETE FROM Booking;
+DELETE FROM Show;
+DELETE FROM Theater;
+DELETE FROM Movie;
+DELETE FROM User;
+DELETE FROM Admin;
+
+SET FOREIGN_KEY_CHECKS = 1; -- Re-enable foreign key checks
+
