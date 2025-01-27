@@ -152,3 +152,136 @@ DELETE FROM Admin;
 
 SET FOREIGN_KEY_CHECKS = 1; -- Re-enable foreign key checks
 SET SQL_SAFE_UPDATES = 1; -- Re-enable safe update mode
+
+-------------------
+
+USE MovieBookingSystem;
+
+-- Insert into Admin Table
+INSERT INTO Admin (adminID, name, email, password)
+VALUES
+(1, 'Admin1', 'admin1@example.com', 'password123'),
+(2, 'Admin2', 'admin2@example.com', 'password456');
+
+-- Insert into User Table
+INSERT INTO User (userID, name, email, password)
+VALUES
+(1, 'John Doe', 'john.doe@example.com', 'john123'),
+(2, 'Jane Smith', 'jane.smith@example.com', 'jane456');
+
+-- Insert into Movie Table
+INSERT INTO Movie (movieID, title, genre, language, duration)
+VALUES
+(1, 'Inception', 'Sci-Fi', 'English', 2.5),
+(2, 'Parasite', 'Thriller', 'Korean', 2.2);
+
+-- Insert into Theater Table
+INSERT INTO Theater (theaterID, name, location, screens)
+VALUES
+(1, 'Cineplex', 'Downtown', 5),
+(2, 'Grand Cinema', 'Uptown', 3);
+
+-- Insert into Show Table
+INSERT INTO Show (showID, movieID, theaterID, timing, availableSeats)
+VALUES
+(1, 1, 1, '2025-01-25 18:00:00', 100), -- 'Inception' at 'Cineplex'
+(2, 2, 2, '2025-01-26 20:00:00', 80);  -- 'Parasite' at 'Grand Cinema'
+
+-- Insert into Booking Table
+INSERT INTO Booking (bookingID, userID, showID, seatsBooked, totalAmount, bookingStatus)
+VALUES
+(1, 1, 1, 2, 500.0, 'Confirmed'), -- Booking by 'John Doe'
+(2, 2, 2, 4, 800.0, 'Pending');   -- Booking by 'Jane Smith'
+
+-- Insert into Payment Table
+INSERT INTO Payment (paymentID, bookingID, amount, paymentStatus)
+VALUES
+(1, 1, 500.0, 'Completed'), -- Payment for John Doe's booking
+(2, 2, 800.0, 'Pending');   -- Payment for Jane Smith's booking
+
+-- Insert into PaymentConfirmation Table
+INSERT INTO PaymentConfirmation (confirmationID, bookingID, paymentStatus, ticketDetails)
+VALUES
+(1, 1, 'Completed', 'Seat 10, Seat 11'), -- Confirmation for John Doe
+(2, 2, 'Pending', 'Seat 1, Seat 2, Seat 3, Seat 4'); -- Confirmation for Jane Smith
+
+-- Insert into BookingNotification Table
+INSERT INTO BookingNotification (notificationID, bookingID, userID, message)
+VALUES
+(1, 1, 1, 'Your booking is confirmed. Enjoy the movie!'), -- Notification for John Doe
+(2, 2, 2, 'Your payment is pending. Please complete it.'); -- Notification for Jane Smith
+
+-----------------
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class FetchData {
+    private static final String URL = "jdbc:mysql://localhost:3306/MovieBookingSystem";
+    private static final String USER = "root"; // Replace with your MySQL username
+    private static final String PASSWORD = "your_password"; // Replace with your MySQL password
+
+    public static void main(String[] args) {
+        Connection connection = null;
+
+        try {
+            // Load MySQL JDBC Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish connection
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Database connected successfully!");
+
+            // Create a statement
+            Statement stmt = connection.createStatement();
+
+            // Fetch data from Admin table
+            System.out.println("\nAdmin Table:");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Admin");
+            while (rs.next()) {
+                System.out.println("Admin ID: " + rs.getInt("adminID") + ", Name: " + rs.getString("name") +
+                                   ", Email: " + rs.getString("email"));
+            }
+
+            // Fetch data from User table
+            System.out.println("\nUser Table:");
+            rs = stmt.executeQuery("SELECT * FROM User");
+            while (rs.next()) {
+                System.out.println("User ID: " + rs.getInt("userID") + ", Name: " + rs.getString("name") +
+                                   ", Email: " + rs.getString("email"));
+            }
+
+            // Fetch data from Movie table
+            System.out.println("\nMovie Table:");
+            rs = stmt.executeQuery("SELECT * FROM Movie");
+            while (rs.next()) {
+                System.out.println("Movie ID: " + rs.getInt("movieID") + ", Title: " + rs.getString("title") +
+                                   ", Genre: " + rs.getString("genre") + ", Language: " + rs.getString("language"));
+            }
+
+            // Fetch data from Booking table
+            System.out.println("\nBooking Table:");
+            rs = stmt.executeQuery("SELECT * FROM Booking");
+            while (rs.next()) {
+                System.out.println("Booking ID: " + rs.getInt("bookingID") + ", User ID: " + rs.getInt("userID") +
+                                   ", Show ID: " + rs.getInt("showID") + ", Seats Booked: " + rs.getInt("seatsBooked") +
+                                   ", Total Amount: " + rs.getFloat("totalAmount") + ", Status: " + rs.getString("bookingStatus"));
+            }
+
+            // Close the result set and statement
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) connection.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
