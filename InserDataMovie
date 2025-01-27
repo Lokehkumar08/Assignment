@@ -54,3 +54,63 @@ INSERT INTO BookingNotification (bookingID, userID, message)
 VALUES
 (1, 1, 'Your booking is confirmed. Enjoy the movie!'),
 (2, 2, 'Your payment is pending. Please complete it.');
+
+
+-----–-----------------------
+
+USE MovieBookingSystem;
+
+-- Insert into Admin
+INSERT INTO Admin (name, email, password)
+VALUES
+('Admin1', 'admin1@example.com', 'password123'),
+('Admin2', 'admin2@example.com', 'password456');
+
+-- Insert into User
+INSERT INTO User (name, email, password)
+VALUES
+('John Doe', 'john@example.com', 'john123'),
+('Jane Smith', 'jane@example.com', 'jane456');
+
+-- Insert into Movie
+INSERT INTO Movie (title, genre, language, duration)
+VALUES
+('Inception', 'Sci-Fi', 'English', 2.5),
+('Parasite', 'Thriller', 'Korean', 2.2);
+
+-- Insert into Theater
+INSERT INTO Theater (name, location, screens)
+VALUES
+('Cineplex', 'Downtown', 5),
+('Grand Cinema', 'Uptown', 3);
+
+-- Insert into Show (Ensure movieID and theaterID exist)
+INSERT INTO Show (movieID, theaterID, timing, availableSeats)
+VALUES
+(1, 1, '2025-01-25 18:00:00', 100),
+(2, 2, '2025-01-26 20:00:00', 80);
+
+-- Insert into Booking (Ensure userID and showID exist)
+INSERT INTO Booking (userID, showID, seatsBooked, totalAmount, bookingStatus)
+VALUES
+(1, 1, 2, 500.0, 'Confirmed'),
+(2, 2, 4, 800.0, 'Pending');
+
+-- Insert into Payment (Ensure bookingID exists)
+INSERT INTO Payment (bookingID, amount, paymentStatus)
+VALUES
+(1, 500.0, 'Completed'),
+(2, 800.0, 'Pending');
+
+-- Insert into PaymentConfirmation (Ensure bookingID exists)
+INSERT INTO PaymentConfirmation (bookingID, paymentStatus, ticketDetails)
+VALUES
+(1, 'Completed', 'Seat 10, Seat 11'),
+(2, 'Pending', 'Seat 1, Seat 2, Seat 3, Seat 4');
+
+-- Insert into BookingNotification (Ensure bookingID and userID exist)
+INSERT INTO BookingNotification (bookingID, userID, message)
+VALUES
+(1, 1, 'Your booking is confirmed. Enjoy the movie!'),
+(2, 2, 'Your payment is pending. Please complete it.');
+
