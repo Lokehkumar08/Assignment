@@ -1,0 +1,44 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main{
+    public static String Merge(String s1,String s2){
+        int i=0;
+        int j=0;
+        ArrayList<String> arrayS1 = new ArrayList<>();
+        for(char ch: s1.toCharArray()){
+            arrayS1.add(String.valueOf(ch));
+        }
+        ArrayList<String> arrayS2 = new ArrayList<>();
+        for(char ch: s2.toCharArray()){
+            arrayS2.add(String.valueOf(ch));
+        }
+        ArrayList<String> array = new ArrayList<>();
+        while(i<s1.length() && j<s2.length()){
+            array.add(arrayS1.get(i));
+            array.add(arrayS2.get(j));
+            i++;
+            j++;
+        }
+        while(i<s1.length() ){
+            array.add(arrayS1.get(i));
+            
+            i++;
+            
+        }
+        while(j<s2.length()){
+           
+            array.add(arrayS2.get(j));
+            
+            j++;
+        }
+        String res = String.join("",array);
+        return res;
+        
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+        System.out.println(Merge(s1,s2));
+    }
+}
