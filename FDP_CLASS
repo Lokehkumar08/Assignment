@@ -1,0 +1,45 @@
+High-level Class Diagram:
+User (Abstract Class)
+
+Attributes: userID, name, email, password, address, phoneNumber
+Methods: login(), logout(), updateProfile()
+Customer (Subclass of User)
+
+Attributes: paymentInfo, orderHistory
+Methods: placeOrder(), trackOrder(), reviewRestaurant()
+RestaurantOwner (Subclass of User)
+
+Attributes: restaurantName, restaurantAddress, menu
+Methods: addMenuItem(), removeMenuItem(), viewOrders()
+DeliveryPerson (Subclass of User)
+
+Attributes: deliveryStatus, assignedOrders
+Methods: acceptOrder(), updateDeliveryStatus()
+Order
+
+Attributes: orderID, customer, restaurant, orderItems, totalCost, orderStatus, paymentStatus
+Methods: createOrder(), updateOrderStatus(), calculateTotalCost()
+MenuItem
+
+Attributes: itemID, itemName, description, price, category
+Methods: updateItem(), removeItem()
+Restaurant
+
+Attributes: restaurantID, name, address, menu, owner
+Methods: addOrder(), removeOrder()
+Payment
+
+Attributes: paymentID, order, paymentMethod, paymentStatus, transactionID
+Methods: processPayment(), refundPayment()
+Review
+
+Attributes: reviewID, customer, restaurant, rating, comment
+Methods: submitReview(), viewReviews()
+Delivery
+
+Attributes: deliveryID, deliveryPerson, order, status, estimatedTime
+Methods: assignDelivery(), updateStatus()
+Admin
+
+Attributes: adminID, name, email, phoneNumber
+Methods: addRestaurant(), removeRestaurant(), viewAllOrders()
