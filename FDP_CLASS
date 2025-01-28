@@ -43,3 +43,12 @@ Admin
 
 Attributes: adminID, name, email, phoneNumber
 Methods: addRestaurant(), removeRestaurant(), viewAllOrders()
+
+
+Relationships:
+A User can be a Customer, RestaurantOwner, or DeliveryPerson.
+Customer places Orders and can leave Reviews.
+RestaurantOwner owns a Restaurant and manages MenuItems.
+Restaurant has many MenuItems and handles multiple Orders.
+An Order is linked to a Payment and has a Delivery.
+Admin can manage Users (add/remove) and view system-wide data.
