@@ -1,0 +1,14 @@
+--Admin 
+Email (add)
+--restaurant 
+Close time (add)
+Restaurant image (text)
+Delete operations (attribute)
+--- MenuItems
+ItemDescription 
+Item Image
+SectionId (remove )
+AddonID (remove)
+--Bank
+HBLID (change to IFFSSI)
+--- 
