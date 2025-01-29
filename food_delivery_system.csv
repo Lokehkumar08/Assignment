@@ -1,0 +1,11 @@
+Example,Module,Classes,Operations,Pattern,Collection/Framework
+Food Delivery,User,User,"Register, Login, PlaceOrder",Singleton,ArrayList
+,Admin,Admin,"DeleteUser, AddRestaurants, DeliveryAgentInfo",Facade,HashMap
+,Restaurants,Restaurants,"AddDishes, RemoveDishes, UpdateTimings",Factory,List
+,Dishes,Dishes,"AddDish, RemoveDish, UpdateDishDetails",Prototype,HashMap
+,UserOrder,UserOrder,"OrderDisplay, UpdateOrderStatus, CalcTotalCost",Observer,Queue
+,PaymentDetails,PaymentDetails,DisplayPaymentDetails,State,HashMap
+,DeliveryPerson,DeliveryPerson,UpdateDeliveryStatus,Mediator,LinkedList
+,Delivery,Delivery,DeliveryDetailsHistory,Strategy,TreeSet
+,UserFavorites,UserFavorites,"AddToFav, RemoveFromFav",Command,ArrayList
+,Remarks,Remarks,AddRemark,Decorator,HashMap
