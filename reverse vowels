@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main{
+    public static String isss(String s){
+        String aa = "aeiouAEIOU";
+        char[] ss = s.toCharArray();
+        int l=0;
+        int r = ss.length-1;
+        while(l<r){
+            if(aa.indexOf(ss[l])==-1){
+                l++;
+                
+            }
+            else if(aa.indexOf(ss[r])==-1){
+                r--;
+            }
+            else{
+                char temp = ss[l];
+                ss[l] = ss[r];
+                ss[r] = temp;
+                l++;
+                r--;
+            }
+            
+        }
+        return new String(ss);
+        
+        
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        System.out.println(isss(s));
+    }
+}
